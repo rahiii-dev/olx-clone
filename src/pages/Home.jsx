@@ -3,6 +3,9 @@ const Home = () => {
     return (
         <>
             <Header/>
+            <main className="py-4">
+
+            </main>
         </>
     );
 }

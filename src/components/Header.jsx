@@ -15,7 +15,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-gray-100">
+    <header className="bg-gray-100 sticky top-0 left-0">
       <div className="container py-3 flex gap-3 justify-between items-center">
         <div className="flex gap-4">
           <a href="">
