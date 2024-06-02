@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import dummyData from '../utils/dummy.json';
 import { Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ItemsListComponent = () => {
     const [itemList, setItemList] = useState([]);
@@ -28,9 +29,9 @@ const ItemsListComponent = () => {
     );
 }
 
-const ItemCard = ({price, image, title, location, date}) => {
+const ItemCard = ({id, price, image, title, location, date}) => {
     return (
-        <a className="p-2 border border-gray-300 rounded cursor-pointer">
+        <Link to={`item/${id}`} className="p-2 border border-gray-300 rounded cursor-pointer">
             <div className="h-[160px] overflow-hidden relative">
                 <button className='absolute top-1 right-1 cursor-pointer bg-white size-10 rounded-full flex justify-center items-center'><Heart/></button>
                 <img className='w-full h-auto object-center' src={image} alt="itemImage" />
@@ -43,7 +44,7 @@ const ItemCard = ({price, image, title, location, date}) => {
                     <div className="text-nowrap">{date}</div>
                 </div>
             </div>
-        </a>
+        </Link>
     );
 }
 

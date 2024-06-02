@@ -1,6 +1,7 @@
 import { ChevronDown, Search, LocateFixed, MapPin, Plus, Check } from "lucide-react";
 import Logo from "./Logo";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [locMenuActive, setLocMenuActive] = useState(false);
@@ -18,9 +19,9 @@ const Header = () => {
     <header className="bg-gray-100 sticky top-0 left-0 z-10 shadow-md">
       <div className="container py-3 flex gap-3 justify-between items-center">
         <div className="flex gap-4">
-          <a href="">
+          <Link to='/'>
             <Logo />
-          </a>
+          </Link>
 
           <div
             onClick={handleLocMenu}
@@ -101,10 +102,9 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <a href="" className="underline-offset-4 underline font-bold">
-            Login
-          </a>
-          <a href="" className="relative w-[104px] h-[48px] shadow-lg rounded-full">
+          <Link to='/login' className="underline-offset-4 underline font-bold">Login</Link>
+            
+          <Link to='/sell' className="relative w-[104px] h-[48px] shadow-lg rounded-full">
             <svg className="absolute top-0 left-0" width="105" height="49" viewBox="0 0 1603 768">
               <g>
                 <path
@@ -129,7 +129,7 @@ const Header = () => {
                 <Plus size={20} strokeWidth={3}/>
                 <span className="font-medium uppercase">Sell</span>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </header>
