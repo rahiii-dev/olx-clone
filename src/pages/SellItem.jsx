@@ -1,19 +1,10 @@
-import { ArrowLeft, Camera } from "lucide-react";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import {Camera } from "lucide-react";
+import HeaderBlank from "../components/HeaderBlank";
 
 const SellItem = () => {
-  const navigate = useNavigate();
-
   return (
     <>
-      <header className="bg-gray-100 shadow-md h-[70px] flex items-center">
-        <div className="container py-3">
-          <button onClick={() => navigate(-1)}>
-            <ArrowLeft />
-          </button>
-        </div>
-      </header>
+      <HeaderBlank/>
       <main>
         <section>
           <div className="container py-8">
