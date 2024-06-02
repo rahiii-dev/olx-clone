@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ItemsList from "../components/ItemsList";
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
             <main className="py-4">
               <ItemsList/>
             </main>
+            <Footer/>
         </>
     );
 }

@@ -69,7 +69,7 @@ const Header = () => {
             <input
               type="search"
               className="w-full h-[inherit] px-2 transition duration-200 border-2 border-r-0 border-black outline-none focus:border-accent"
-              placeholder="Find Cars, Mmobile Phones and More..."
+              placeholder="Find Cars, Mobile Phones and More..."
             />
             <button
               type="submit"
