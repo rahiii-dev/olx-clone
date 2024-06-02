@@ -30,7 +30,7 @@ const ItemsListComponent = () => {
 
 const ItemCard = ({price, image, title, location, date}) => {
     return (
-        <a className="p-2 border border-gray-300 rounded">
+        <a className="p-2 border border-gray-300 rounded cursor-pointer">
             <div className="h-[160px] overflow-hidden relative">
                 <button className='absolute top-1 right-1 cursor-pointer bg-white size-10 rounded-full flex justify-center items-center'><Heart/></button>
                 <img className='w-full h-auto object-center' src={image} alt="itemImage" />

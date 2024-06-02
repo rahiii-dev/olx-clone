@@ -9,7 +9,7 @@ import mobility from '../assets/images/mobility.svg'
 const Footer = () => {
   return (
     <footer>
-      <div className="container pt-3 pb-9 bg-gray-200 flex gap-3 flex-wrap">
+      <div className="container pt-5 pb-9 bg-gray-200 flex gap-3 flex-wrap">
         {footerLinks.map((item, idx) => (
           <LinkContainer key={idx} {...item} />
         ))}
