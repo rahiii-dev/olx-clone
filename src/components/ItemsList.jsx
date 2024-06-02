@@ -4,9 +4,13 @@ import { Heart } from 'lucide-react';
 
 const ItemsListComponent = () => {
     const [itemList, setItemList] = useState([]);
+    const [itemLoading, setItemLoading] = useState(true);
 
     useEffect(() => {
-        setItemList(dummyData)
+        setTimeout(() => {
+            setItemList(dummyData)
+            setItemLoading(false)
+        }, 1000)
     }, [])
 
     return (
@@ -14,9 +18,10 @@ const ItemsListComponent = () => {
             <div className="container">
                 <h1 className='text-2xl mb-4'>Fresh recommendations</h1>
                 <div className="grid custom-grid-col gap-4 scroll-smooth">
-                    {itemList.map(item => {
-                        return <ItemCard key={item?.id} {...item}/>;
-                    })}
+                    {itemLoading ? 
+                        <ItemShimmerList/>
+                        : itemList.map(item => <ItemCard key={item?.id} {...item}/>)
+                    }
                 </div>
             </div>
         </section>
@@ -40,6 +45,37 @@ const ItemCard = ({price, image, title, location, date}) => {
             </div>
         </a>
     );
+}
+
+const ItemCardShimmer = () => {
+    return (
+        <a className="p-2 border border-gray-300 rounded animate-pulse">
+            <div className="h-[160px] overflow-hidden">
+                <div className='bg-gray-300 w-full h-full'> </div>
+            </div>
+            <div className='pt-2 px-2'>
+                <div className="h-4 w-[90%] bg-gray-300 rounded-full mb-2"></div>
+                <div className="h-3 w-[80%] bg-gray-300 rounded-full mb-3"></div>
+                <div className="h-3 w-[80%] bg-gray-300 rounded-full">
+                </div>
+            </div>
+        </a>
+    );
+}
+
+const ItemShimmerList = () => {
+    return(
+        <>
+        <ItemCardShimmer/>
+        <ItemCardShimmer/>
+        <ItemCardShimmer/>
+        <ItemCardShimmer/>
+        <ItemCardShimmer/>
+        <ItemCardShimmer/>
+        <ItemCardShimmer/>
+        <ItemCardShimmer/>
+        </>
+    )
 }
 
 export default ItemsListComponent;
