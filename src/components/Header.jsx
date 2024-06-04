@@ -2,17 +2,26 @@ import { ChevronDown, Search, LocateFixed, MapPin, Plus, Check } from "lucide-re
 import Logo from "./Logo";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "./AuthContextProvider";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Header = () => {
   const [locMenuActive, setLocMenuActive] = useState(false);
   const [langMenuActive, setLangMenuActive] = useState(false);
 
-  function handleLocMenu() {
+  const {currentUser} = useAuth();
+
+  const handleLocMenu = () => {
     setLocMenuActive(!locMenuActive);
   }
 
-  function handleLangMenu() {
+  const handleLangMenu = () => {
     setLangMenuActive(!langMenuActive);
+  }
+
+  const logout = () => {
+    signOut(auth);
   }
 
   return (
@@ -102,7 +111,8 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link to='/login' className="underline-offset-4 underline font-bold">Login</Link>
+          {currentUser ? <button onClick={logout} className="font-semibold bg-accent px-4 py-2 rounded">Logout</button>: <Link to='/login' className="underline-offset-4 underline font-bold">Login</Link>}
+          
             
           <Link to='/sell' className="relative w-[104px] h-[48px] shadow-lg rounded-full">
             <svg className="absolute top-0 left-0" width="105" height="49" viewBox="0 0 1603 768">
