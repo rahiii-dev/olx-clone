@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 const ItemsListComponent = () => {
     const [itemList, setItemList] = useState([]);
     const [itemLoading, setItemLoading] = useState(true);
-
     useEffect(() => {
         setTimeout(() => {
             setItemList(dummyData)
             setItemLoading(false)
         }, 1000)
+        
     }, [])
 
     return (
@@ -67,6 +67,8 @@ const ItemCardShimmer = () => {
 const ItemShimmerList = () => {
     return(
         <>
+        <ItemCardShimmer/>
+        <ItemCardShimmer/>
         <ItemCardShimmer/>
         <ItemCardShimmer/>
         <ItemCardShimmer/>

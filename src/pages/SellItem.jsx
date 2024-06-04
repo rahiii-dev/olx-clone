@@ -122,6 +122,7 @@ const SellItem = () => {
                       name="image-1"
                       id="image-1"
                       className="sr-only"
+                      accept="png"
                     />
                   </div>
                 </div>

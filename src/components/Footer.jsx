@@ -9,53 +9,58 @@ import mobility from '../assets/images/mobility.svg'
 const Footer = () => {
   return (
     <footer>
-      <div className="container pt-5 pb-9 bg-gray-200 flex gap-3 flex-wrap">
-        {footerLinks.map((item, idx) => (
-          <LinkContainer key={idx} {...item} />
-        ))}
+      <div className="bg-gray-200">
+        <div className="container pt-5 pb-9  flex gap-3 flex-wrap">
+          {footerLinks.map((item, idx) => (
+            <LinkContainer key={idx} {...item} />
+          ))}
+        </div>
       </div>
-      <div className="container pt-5 pb-10 bg-slate-800 flex gap-3">
-        <div className="h-[100px] min-w-[200px] ps-0 p-5 border-r-2 border-white flex items-center">
-            <img
-              className="w-full h-auto"
-              src={cartrade_tech}
-              alt="Car Trade"
-            />
-        </div>
-        <div className="flex-grow h-[100px] min-w-[100px] p-5 border-white flex justify-center items-center">
-            <img
-              className="w-full h-auto max-w-[100px]"
-              src={olx}
-              alt="Car Trade"
-            />
-        </div>
-        <div className="flex-grow h-[100px] p-5 min-w-[100px] border-white flex items-center">
-            <img
-              className="w-full h-auto"
-              src={carwale}
-              alt="Car Trade"
-            />
-        </div>
-        <div className="flex-grow h-[100px] p-5 min-w-[100px] border-white flex items-center">
-            <img
-              className="w-full h-auto"
-              src={bikewale}
-              alt="Car Trade"
-            />
-        </div>
-        <div className="flex-grow h-[100px] p-5 min-w-[100px] border-white flex items-center">
-            <img
-              className="w-full h-auto"
-              src={cartrade}
-              alt="Car Trade"
-            />
-        </div>
-        <div className="flex-grow h-[100px] p-5 min-w-[100px] border-white flex items-center">
-            <img
-              className="w-full h-auto"
-              src={mobility}
-              alt="Car Trade"
-            />
+
+      <div className="bg-slate-800">
+        <div className="container pt-5 pb-10  flex gap-3">
+          <div className="h-[100px] min-w-[200px] ps-0 p-5 border-r-2 border-white flex items-center">
+              <img
+                className="w-full h-auto"
+                src={cartrade_tech}
+                alt="Car Trade"
+              />
+          </div>
+          <div className="flex-grow h-[100px] min-w-[100px] p-5 border-white flex justify-center items-center">
+              <img
+                className="w-full h-auto max-w-[100px]"
+                src={olx}
+                alt="Car Trade"
+              />
+          </div>
+          <div className="flex-grow h-[100px] p-5 min-w-[100px] border-white flex items-center">
+              <img
+                className="w-full h-auto"
+                src={carwale}
+                alt="Car Trade"
+              />
+          </div>
+          <div className="flex-grow h-[100px] p-5 min-w-[100px] border-white flex items-center">
+              <img
+                className="w-full h-auto"
+                src={bikewale}
+                alt="Car Trade"
+              />
+          </div>
+          <div className="flex-grow h-[100px] p-5 min-w-[100px] border-white flex items-center">
+              <img
+                className="w-full h-auto"
+                src={cartrade}
+                alt="Car Trade"
+              />
+          </div>
+          <div className="flex-grow h-[100px] p-5 min-w-[100px] border-white flex items-center">
+              <img
+                className="w-full h-auto"
+                src={mobility}
+                alt="Car Trade"
+              />
+          </div>
         </div>
       </div>
     </footer>
