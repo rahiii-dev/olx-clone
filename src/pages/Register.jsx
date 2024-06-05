@@ -61,12 +61,13 @@ const Register = () => {
         if (!validateForm()) {
             return;
         }
+
+        const displayName = `${firstName[0].toUpperCase() + firstName.slice(1)} ${lastName[0].toUpperCase() + lastName.slice(1)}`;
+        
         setIsSubmitting(true);
         try {
             const newUser = await createUserWithEmailAndPassword(auth, email, password);
-            await updateProfile(newUser.user, {
-                displayName : `${firstName.toUpperCase()} ${lastName.toUpperCase()}`
-            })
+            await updateProfile(newUser.user, {displayName})
             navigate(redirectTo, { replace: true });
         } catch (error) {
             setError("Failed to create an account")
