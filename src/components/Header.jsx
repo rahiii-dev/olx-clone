@@ -111,7 +111,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          {currentUser ? <button onClick={logout} className="font-semibold bg-accent px-4 py-2 rounded">Logout</button>: <Link to='/login' className="underline-offset-4 underline font-bold">Login</Link>}
+          {currentUser ? <button onClick={logout} className="font-semibold bg-accent px-4 py-2 rounded">Logout</button>: <Link to='/auth/login' className="underline-offset-4 underline font-bold">Login</Link>}
           
             
           <Link to='/sell' className="relative w-[104px] h-[48px] shadow-lg rounded-full">
