@@ -7,7 +7,7 @@ const HeaderBlank = () => {
     return (
         <header className="bg-gray-100 shadow-md h-[70px] flex items-center">
         <div className="container py-3">
-          <button onClick={() => navigate(-1)}>
+          <button onClick={() => navigate('/')}>
             <ArrowLeft />
           </button>
         </div>

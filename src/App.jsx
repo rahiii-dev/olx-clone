@@ -1,13 +1,14 @@
 import Home from './pages/Home';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Login from './pages/Login';
 import ItemsList from "./pages/ItemsList";
 import ItemDetail from './pages/ItemDetail';
 import SellItem from './pages/SellItem';
-import { useAuth } from './components/AuthContextProvider';
+import { useAuth } from './context/AuthContext';
 
 function App() {
    const {currentUser} = useAuth();
+   const location = useLocation();
 
   return (
     <>
@@ -17,7 +18,7 @@ function App() {
           <Route path="/item/:itemId" element={<ItemDetail/>}/>
         </Route>
         <Route path='/login' element={!currentUser ? <Login/> : <Navigate to='/'/>}/>
-        <Route path='/sell' element={!currentUser ? <Navigate to='/login'/> : <SellItem/>}/>
+        <Route path='/sell' element={!currentUser ? <Navigate to='/login' state={{from : location.pathname}}/> : <SellItem/>}/>
       </Routes>
     </>
   )

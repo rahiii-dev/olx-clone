@@ -2,6 +2,7 @@ import { useState } from "react";
 import HeaderBlank from "../components/HeaderBlank";
 import { auth } from "../utils/firebase";
 import { signInWithEmailAndPassword} from "firebase/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -10,12 +11,10 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState('');
 
+  const navigate = useNavigate();
+  const location = useLocation();
   
-
-  const logout = () => {
-    signOut(auth);
-    console.log("signedOut");
-  }
+  const redirectTo = location.state?.from ?? '/';
 
   const validateForm = () => {
     let valid = true;
@@ -44,7 +43,9 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setError('');
+      if(error){setError('');}
+      navigate(redirectTo, {replace : true})
+
     } catch (error) {
       setError('Failed to login. Please check your email and password.');
     }

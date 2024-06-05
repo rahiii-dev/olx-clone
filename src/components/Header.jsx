@@ -2,7 +2,7 @@ import { ChevronDown, Search, LocateFixed, MapPin, Plus, Check } from "lucide-re
 import Logo from "./Logo";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "./AuthContextProvider";
+import { useAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
