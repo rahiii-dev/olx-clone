@@ -1,8 +1,13 @@
 import { Camera } from "lucide-react";
 import HeaderBlank from "../components/HeaderBlank";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { PostCollection, storage } from "../utils/firebase";
+import { useAuth } from "../context/AuthContext";
+import { addDoc } from "firebase/firestore";
 
 const SellItem = () => {
+  const {currentUser} = useAuth()
   const [formData, setFormData] = useState({
     title: "",
     price: "",
@@ -102,7 +107,36 @@ const SellItem = () => {
     if (!validateForm()) {
       return;
     }
-    console.log("Submitting");
+    setIsSubmitting(true)
+    try {
+      const imageRef = ref(storage, `images/${formData.image.name}`);
+      await uploadBytes(imageRef, formData.image);
+      const imageUrl = await getDownloadURL(imageRef);
+      
+      await addDoc(PostCollection, {
+        ...formData,
+        image : imageUrl,
+        userId : currentUser.uid
+      });
+
+      setFormData({
+        title: "",
+        price: "",
+        description: "",
+        state: "",
+        city: "",
+        image: null,
+      })
+      setImgPreview(null);
+      alert("Item Posted Succesfully.")
+
+    } catch (error) {
+      console.log(error);
+      alert("Failed to post item.")
+    }
+    finally{
+      setIsSubmitting(false)
+    }
   };
 
   return (
@@ -269,10 +303,10 @@ const SellItem = () => {
                 <div>
                   <button
                     type="submit"
-                    disabled={false}
-                    className="font-bold p-3 rounded bg-black text-white disabled:bg-gray-300 disabled:text-gray-400"
+                    className={`font-bold p-3 rounded  text-white ${isSubmitting ? 'bg-slate-400' : 'bg-black'} `}
+                    disabled={isSubmitting}
                   >
-                    Post Now
+                    {isSubmitting ?'Posting....' :'Post Now'}
                   </button>
                 </div>
               </div>

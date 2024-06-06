@@ -1,5 +1,7 @@
 import { initializeApp, getApps } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { collection, getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,4 +23,9 @@ if (!getApps().length) {
 
 const auth = getAuth(app);
 
-export { auth };
+const db = getFirestore(app);
+const PostCollection = collection(db, 'posts');
+
+const storage = getStorage(app);
+
+export { auth, PostCollection, storage };
