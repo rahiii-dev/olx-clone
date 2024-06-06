@@ -1,10 +1,10 @@
 import dummyData from "../utils/dummy.json";
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
-import usePosts from "../hooks/usePosts";
+import { usePostList } from "../context/PostContext";
 
 const ItemsListComponent = () => {
-  const {itemsList, itemsLoading} = usePosts()
+  const {itemsList, itemsLoading} = usePostList()
 
   return (
     <section>

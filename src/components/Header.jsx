@@ -5,10 +5,14 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { usePostList } from "../context/PostContext";
 
 const Header = () => {
+  const {filterItems} = usePostList();
+
   const [locMenuActive, setLocMenuActive] = useState(false);
   const [langMenuActive, setLangMenuActive] = useState(false);
+  const [filterQuery, setFilterQuery] = useState('');
 
   const {currentUser} = useAuth();
 
@@ -75,8 +79,15 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-3 flex-grow">
-          <form className="hidden rounded overflow-hidden h-[50px] sm:flex items-start flex-grow">
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              filterItems(filterQuery)
+            }}
+            className="hidden rounded overflow-hidden h-[50px] sm:flex items-start flex-grow">
             <input
+            value={filterQuery}
+              onChange={(e) => setFilterQuery(e.target.value)}
               type="search"
               className="w-full h-[inherit] px-2 transition duration-200 border-2 border-r-0 border-black outline-none focus:border-accent"
               placeholder="Find Cars, Mobile Phones and More..."

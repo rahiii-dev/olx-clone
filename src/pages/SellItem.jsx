@@ -5,9 +5,12 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { PostCollection, storage } from "../utils/firebase";
 import { useAuth } from "../context/AuthContext";
 import { addDoc } from "firebase/firestore";
+import { usePostList } from "../context/PostContext";
 
 const SellItem = () => {
   const {currentUser} = useAuth();
+  const { UpdateList } = usePostList();
+
   const [formData, setFormData] = useState({
     title: "",
     price: "",
@@ -119,6 +122,8 @@ const SellItem = () => {
         userId : currentUser.uid
       });
 
+      UpdateList();
+
       setFormData({
         title: "",
         price: "",
@@ -131,7 +136,6 @@ const SellItem = () => {
       alert("Item Posted Succesfully.")
 
     } catch (error) {
-      console.log(error);
       alert("Failed to post item.")
     }
     finally{
