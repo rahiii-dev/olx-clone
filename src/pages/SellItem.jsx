@@ -1,13 +1,13 @@
 import { Camera } from "lucide-react";
 import HeaderBlank from "../components/HeaderBlank";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { PostCollection, storage } from "../utils/firebase";
 import { useAuth } from "../context/AuthContext";
 import { addDoc } from "firebase/firestore";
 
 const SellItem = () => {
-  const {currentUser} = useAuth()
+  const {currentUser} = useAuth();
   const [formData, setFormData] = useState({
     title: "",
     price: "",

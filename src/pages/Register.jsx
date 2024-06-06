@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { auth } from '../utils/firebase';
+import { auth, UserCollection } from '../utils/firebase';
+import { addDoc } from 'firebase/firestore';
 
 const Register = () => {
     const [firstName, setFirstName] = useState('')
@@ -68,6 +69,12 @@ const Register = () => {
         try {
             const newUser = await createUserWithEmailAndPassword(auth, email, password);
             await updateProfile(newUser.user, {displayName})
+            await addDoc(UserCollection, {
+              uid: newUser.user.uid,
+              email: newUser.user.email,
+              displayName: displayName,
+            });
+            
             navigate(redirectTo, { replace: true });
         } catch (error) {
             setError("Failed to create an account")
